@@ -1,0 +1,18 @@
+name: "Shepherd"
+author: "BrontoSource"
+description: "Notifies BrontoSource Shepherd of action results."
+runs:
+  using: "node24"
+  pre: "dist/pre.js"
+  main: "dist/main.js"
+  post: "dist/post.js"
+inputs:
+  bronto-shepherd-workflow-token:
+    description: "A token to pass to Bronto Shepherd identifying this action."
+    required: false
+  bronto-shepherd-url:
+    description: "A URL at which Bronto Shepherd can be reached."
+    required: false
+branding:
+  icon: 'code'
+  color: 'green'

@@ -1,0 +1,1 @@
+{"version":3,"file":"post.js","sources":["../post.js"],"sourcesContent":["import { notify } from './notify.js';\n\nnotify(false);"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAEA,MAAM,CAAC,KAAK,CAAC"}
