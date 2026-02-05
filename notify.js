@@ -8,11 +8,6 @@ export async function notify(isPre) {
   // users to run actions manually without communicating with Bronto Shepherd.
   if (!token && !url) { return; }
 
-  if (!token) {
-    core.setFailed('Missing input: "bronto-shepherd-workflow-run"');
-    return;
-  }
-
   if (!url) {
     core.setFailed('Missing input: "bronto-shepherd-url"');
     return;
