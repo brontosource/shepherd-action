@@ -18,6 +18,8 @@ export async function notify(isPre) {
     return;
   }
 
+
+  const [owner, name] = process.env.GITHUB_REPOSITORY.split('/');
   const response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -26,7 +28,9 @@ export async function notify(isPre) {
     body: JSON.stringify({
       token,
       start: isPre,
-      run_id: process.env.GITHUB_RUN_ID
+      run_id: process.env.GITHUB_RUN_ID,
+      repo_owner: owner,
+      repo_name: name
     }),
   });
 
