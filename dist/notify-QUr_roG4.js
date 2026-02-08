@@ -27498,6 +27498,17 @@ function requireCore () {
 
 var coreExports = requireCore();
 
+function parseWorkflowFilename(workflowRef) {
+  const WORKFLOW_DIRECTORY = '/.github/workflows/';
+  const dirStart = workflowRef.indexOf(WORKFLOW_DIRECTORY);
+  if (dirStart === -1) { return null; }
+  const filenameStart = dirStart + WORKFLOW_DIRECTORY.length;
+  let refStart = workflowRef.indexOf('@refs/', filenameStart);
+  if (refStart === -1) { refStart = workflowRef.lastIndexOf('@'); }
+  if (refStart === -1) { return null; }
+  return workflowRef.substring(filenameStart, refStart);
+}
+
 async function notify(isPre) {
   const token = process.env['INPUT_BRONTO-SHEPHERD-WORKFLOW-TOKEN'];
   const url = process.env['INPUT_BRONTO-SHEPHERD-URL'];
@@ -27506,16 +27517,20 @@ async function notify(isPre) {
   // users to run actions manually without communicating with Bronto Shepherd.
   if (!token && !url) { return; }
 
-  if (!token) {
-    coreExports.setFailed('Missing input: "bronto-shepherd-workflow-run"');
-    return;
-  }
-
   if (!url) {
     coreExports.setFailed('Missing input: "bronto-shepherd-url"');
     return;
   }
 
+  const workflowRef = process.env.GITHUB_WORKFLOW_REF;
+  const workflow = parseWorkflowFilename(workflowRef);
+
+  if (!workflow) {
+    coreExports.setFailed(`Failed to parse workflow ref '${workflowRef}'`);
+    return;
+  }
+
+  const [owner, name] = process.env.GITHUB_REPOSITORY.split('/');
   const response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -27524,7 +27539,10 @@ async function notify(isPre) {
     body: JSON.stringify({
       token,
       start: isPre,
-      run_id: process.env.GITHUB_RUN_ID
+      workflow,
+      run_id: process.env.GITHUB_RUN_ID,
+      repo_owner: owner,
+      repo_name: name
     }),
   });
 
@@ -27536,4 +27554,4 @@ async function notify(isPre) {
 }
 
 export { notify as n };
-//# sourceMappingURL=notify-s-K2xyZa.js.map
+//# sourceMappingURL=notify-QUr_roG4.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"pre.js","sources":["../pre.js"],"sourcesContent":["import { notify } from './notify.js';\n\nnotify(true);"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAEA,MAAM,CAAC,IAAI,CAAC"}
+{"version":3,"file":"pre.js","sources":["../pre.js"],"sourcesContent":["import { notify } from './notify.js';\n\nnotify(true);"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAEA,MAAM,CAAC,IAAI,CAAC"}
