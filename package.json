@@ -1,11 +1,15 @@
 {
   "type": "module",
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "rollup": "^4.56.0"
+  "scripts": {
+    "package": "npx rimraf ./dist && npx rollup --config rollup.config.js"
   },
   "dependencies": {
     "@actions/core": "^2.0.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "rimraf": "^6.1.2",
+    "rollup": "^4.56.0"
   }
 }
