@@ -27510,8 +27510,8 @@ function parseWorkflowFilename(workflowRef) {
 }
 
 async function notify(isPre) {
-  const token = process.env['INPUT_BRONTO-SHEPHERD-WORKFLOW-TOKEN'];
-  const url = process.env['INPUT_BRONTO-SHEPHERD-URL'];
+  const token = process.env['INPUT_BRONTO-SHEPHERD-WORKFLOW-TOKEN'] || null;
+  const url = process.env['INPUT_BRONTO-SHEPHERD-URL'] || null;
 
   // If both inputs are missing, the action completes successfully, allowing
   // users to run actions manually without communicating with Bronto Shepherd.
@@ -27554,4 +27554,4 @@ async function notify(isPre) {
 }
 
 export { notify as n };
-//# sourceMappingURL=notify-QUr_roG4.js.map
+//# sourceMappingURL=notify-C8-rzeWN.js.map
