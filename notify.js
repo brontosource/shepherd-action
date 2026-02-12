@@ -43,6 +43,7 @@ export async function notify(isPre) {
       start: isPre,
       workflow,
       run_id: process.env.GITHUB_RUN_ID,
+      commit: process.env.GITHUB_SHA,
       repo_owner: owner,
       repo_name: name
     }),

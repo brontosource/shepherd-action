@@ -27541,6 +27541,7 @@ async function notify(isPre) {
       start: isPre,
       workflow,
       run_id: process.env.GITHUB_RUN_ID,
+      commit: process.env.GITHUB_SHA,
       repo_owner: owner,
       repo_name: name
     }),
@@ -27554,4 +27555,4 @@ async function notify(isPre) {
 }
 
 export { notify as n };
-//# sourceMappingURL=notify-C8-rzeWN.js.map
+//# sourceMappingURL=notify-DcG7H2sr.js.map
